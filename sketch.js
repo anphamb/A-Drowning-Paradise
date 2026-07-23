@@ -1,22 +1,3 @@
-/* =========================================================
-   BONG BÓNG "LIFE BELOW WATER" + STICKER RÁC (gộp 1 file)
-   ---------------------------------------------------------
-   PHẦN 1 — BONG BÓNG (giữ nguyên 100% logic gốc):
-   - background.png (ảnh duotone xanh) hiển thị bằng <img class="background">
-   - canvas nằm CHỒNG LÊN TRÊN ảnh đó, trong suốt hoàn toàn
-   - Mỗi bong bóng là 1 "khung tròn" vẽ ra đúng vùng ảnh MÀU THẬT
-     (backgroundraw.png) tại vị trí tương ứng
-   - Bong bóng bay lơ lửng random, né vùng chữ/logo
-
-   PHẦN 2 — STICKER RÁC (mới thêm):
-   - 9 vị trí (SLOT) CỐ ĐỊNH theo layout gốc
-   - Mỗi lần load trang: random hoán đổi ảnh nào nằm ở slot nào
-     (vị trí layout giữ nguyên, chỉ đổi nội dung ảnh)
-   - Vẽ TĨNH, nằm DƯỚI lớp bong bóng (bong bóng bay đè lên trên)
-   - rot / flipH / flipV mỗi slot: chỉnh trực tiếp trong SLOTS bên dưới
-
-   Dùng chung canvas #bubbleCanvas — KHÔNG cần sửa index.html/style.css
-   ========================================================= */
 
 (() => {
   const canvas = document.getElementById("bubbleCanvas");
@@ -26,11 +7,11 @@
   const rawImage = new Image();
   rawImage.src = "backgroundraw.png";
 
-  // ---------- SPRITE BONG BÓNG (xuất từ Illustrator) ----------
+
   const SPRITE_PATHS = ["bubble1.png", "bubble2.png", "bubble3.png"];
   const bubbleSprites = [];
 
-  // ---------- CÁC THÔNG SỐ CÓ THỂ CHỈNH (BONG BÓNG) ----------
+
   const AVOID_SELECTORS = [".header", ".SDG", ".title", ".des", ".quote", ".content-quote", ".letter", ".letteropen", ".mes", ".call", ".pick-up", ".ref-image", ".text-ref", ".RMIT", ".group"];
   const AVOID_PADDING = 22;
   const AVOID_REPEL_MARGIN = 46;
@@ -53,28 +34,21 @@
   const MIN_BUBBLES = 20;
   const MAX_BUBBLES = 50;
 
-  // ---------------------------------------------------------
-  // ---------- CÁC THÔNG SỐ STICKER RÁC (MỚI) ----------
-  // ---------------------------------------------------------
-  // 1) Danh sách file ảnh — sửa tên cho đúng với file thật của cậu
+  
   const STICKER_FILES = [
-    "62.png", // chai nhựa
-    "57.png", // nĩa nhỏ
-    "63.png", // muỗng
-    "16.png", // cua ẩn sĩ + lon
-    "44.png", // vòng lục giác (six-pack rings)
-    "19.png", // rùa mắc bao nilon
-    "65.png", // túi nilon
-    "67.png", // lon nước
-    "17.png", // chim mắc lưới
+    "62.png", 
+    "57.png", 
+    "63.png", 
+    "16.png", 
+    "44.png", 
+    "19.png", 
+    "65.png", 
+    "67.png", 
+    "17.png", 
     "42.png",
-    // "40.png", "42.png", "23.png"  <-- nếu đây là 3 file còn thiếu tên, thêm vào
   ];
 
-  // 2) Slot layout — vị trí % theo ảnh nền (0–1), CỐ ĐỊNH
-  //    wFrac: độ rộng sticker theo % chiều rộng ảnh nền
-  //    rot: góc xoay (độ) — CHỈNH Ở ĐÂY
-  //    flipH/flipV: lật ngang/dọc — CHỈNH true/false Ở ĐÂY
+
   const STICKER_SLOTS = [
     { id: "A", xFrac: 0.845, yFrac: 0.220, wFrac: 0.16, rot: 0, flipH: false, flipV: false },
     { id: "B", xFrac: 0.153, yFrac: 0.280, wFrac: 0.16, rot: 0, flipH: false, flipV: false },
@@ -117,7 +91,7 @@
     });
   }
 
-  /* ---------- Vẽ toàn bộ sticker (tĩnh) lên canvas hiện tại ---------- */
+
   function drawStickers() {
     if (!stickersLoaded) return;
     STICKER_SLOTS.forEach((slot, i) => {
@@ -152,7 +126,7 @@
   const rand = (min, max) => min + Math.random() * (max - min);
   const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
 
-  /* ---------- Đợi ảnh nền + ảnh raw load xong ---------- */
+
   function whenReady(cb) {
     let count = 0;
     const done = () => { count++; if (count === 2) cb(); };
@@ -160,7 +134,6 @@
     if (rawImage.complete) done(); else rawImage.addEventListener("load", done);
   }
 
-  /* ---------- Tự động cắt phần trong suốt thừa quanh sprite ---------- */
   function trimTransparentPadding(img) {
     const off = document.createElement("canvas");
     off.width = img.naturalWidth;
@@ -209,7 +182,7 @@
     return { sx, sy, sw, sh };
   }
 
-  /* ---------- Load các sprite bong bóng (không bắt buộc phải có) ---------- */
+ 
   function preloadSprites(cb) {
     let remaining = SPRITE_PATHS.length;
     if (remaining === 0) { cb(); return; }
@@ -226,7 +199,6 @@
     });
   }
 
-  /* ---------- Tính lại kích thước canvas + vùng né chữ ---------- */
   function layout() {
     displayWidth = bgImgEl.offsetWidth;
     displayHeight = bgImgEl.offsetHeight;

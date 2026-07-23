@@ -1,6 +1,4 @@
- /* ========================================
-     2. RESET CƠ BẢN
-     ======================================== */
+
   * {
     margin: 0;
     padding: 0;
@@ -11,16 +9,8 @@
     height: 100%;
     width: 100%;
   }
-  /* ========================================
-     1. KHAI BÁO FONT CHỮ RIÊNG (LOCAL FONT)
-     ========================================
-     - Bạn cần tạo 1 thư mục tên "fonts" nằm CÙNG CẤP với file index.html này.
-     - Copy 2 file font Rasmien và Amoria mà bạn đã tải về vào trong thư mục "fonts" đó.
-     - Đổi đúng tên file bên dưới (src: url(...)) cho khớp với tên file font thật của bạn.
-       Ví dụ nếu font của bạn là "Rasmien-Regular.otf" thì sửa lại url("fonts/Rasmien-Regular.otf") format("opentype")
-     - Font hỗ trợ nhiều định dạng: .woff2, .woff, .ttf, .otf
-  */
- 
+
+
   @font-face {
     font-family: "Rasmien";
     src:  url("Rasmien Demo.otf") format("opentype");
@@ -38,14 +28,6 @@
   }
  
  
- 
-  /* ========================================
-     3. BACKGROUND FULL SCREEN, KHÔNG BỊ KÉO GIÃN / LỆCH
-     ========================================
-     - background-size: cover  -> hình luôn phủ kín màn hình, không méo
-     - background-position: center -> luôn canh giữa hình
-     - background-repeat: no-repeat -> không lặp lại hình
-  */
   body {
     min-height: 100vh;
     width: 100%;
