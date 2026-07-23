@@ -1,0 +1,279 @@
+ /* ========================================
+     2. RESET CƠ BẢN
+     ======================================== */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+ 
+  html, body {
+    height: 100%;
+    width: 100%;
+  }
+  /* ========================================
+     1. KHAI BÁO FONT CHỮ RIÊNG (LOCAL FONT)
+     ========================================
+     - Bạn cần tạo 1 thư mục tên "fonts" nằm CÙNG CẤP với file index.html này.
+     - Copy 2 file font Rasmien và Amoria mà bạn đã tải về vào trong thư mục "fonts" đó.
+     - Đổi đúng tên file bên dưới (src: url(...)) cho khớp với tên file font thật của bạn.
+       Ví dụ nếu font của bạn là "Rasmien-Regular.otf" thì sửa lại url("fonts/Rasmien-Regular.otf") format("opentype")
+     - Font hỗ trợ nhiều định dạng: .woff2, .woff, .ttf, .otf
+  */
+ 
+  @font-face {
+    font-family: "Rasmien";
+    src:  url("Rasmien Demo.otf") format("opentype");
+    font-weight: Rsnormal;
+    font-style: normal;
+    font-display: swap;
+  }
+ 
+  @font-face {
+    font-family: "Amoria";
+    src: url("AMORIA.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+ 
+ 
+ 
+  /* ========================================
+     3. BACKGROUND FULL SCREEN, KHÔNG BỊ KÉO GIÃN / LỆCH
+     ========================================
+     - background-size: cover  -> hình luôn phủ kín màn hình, không méo
+     - background-position: center -> luôn canh giữa hình
+     - background-repeat: no-repeat -> không lặp lại hình
+  */
+  body {
+    min-height: 100vh;
+    width: 100%;
+ 
+    overflow-x: hidden;
+    overflow-y: auto;
+ 
+    font-family: "Amoria", sans-serif;
+    color: #2b2b2b;
+  }
+ 
+.scence{
+    position:relative;
+    aspect-ratio: 1920 / 4000;
+    overflow: hidden;
+}
+
+.background{
+
+    position: absolute;
+    top:0;
+    left:0;
+
+    width:100vw;
+    height: auto;
+
+    z-index: -1;
+
+}
+
+#bubbleCanvas{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100vw;
+    height:100vh;
+
+    z-index:-1;
+
+    pointer-events:none;
+
+}
+
+.content{
+
+    position:relative;
+
+    z-index:1;
+
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px;
+}
+.COMM{
+    color: rgb(76, 131, 61);
+    font-size: 150%;
+} 
+.S401{
+    color: rgb(76, 131, 61);
+    margin: 0;
+    font-size: 150%;
+}    
+.SDG{
+    color: rgb(76, 131, 61);
+    text-align: center;
+    font-size: 250%;
+    margin: 0;
+    margin-top: 8%;
+}
+.title{
+    display: block;
+    width: 35%;
+    height: auto;
+
+    margin: 2% auto 0 auto;
+}
+.des{
+    color: rgb(76, 131, 61);
+    text-align: center;
+    font-size: 220%;
+    margin-top: 2%;
+}
+.quotebox {
+  position: relative;
+  margin-top: 14%;
+}
+.quote {
+  display: block;
+  width: 20%;
+  height: auto;
+  margin: 5% auto 0 auto;
+}
+.content-quote{
+   color: rgb(76, 131, 61);
+    text-align: center;
+    font-size: 250%;
+    margin: 0;
+    margin-top: 2%;
+}
+.mail{
+  position: relative; 
+  width: 40%;
+  margin: 20% auto;
+}
+
+.letter{
+  display: block;
+  width: 100%;
+  height: auto;
+  z-index: 1;
+  opacity: 1;
+  transition: opacity 0.6s ease;
+}
+ 
+.letteropen {
+  position: absolute;
+  top: -40%;
+  left: 7.5%;
+  display: block;
+  width: 90%;
+  height: auto;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+ 
+.mes {
+  position: absolute;
+  top: -15%;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: auto;
+  z-index: 3;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+ 
+.mail:hover .letter {
+  opacity: 0;
+}
+ 
+.mail:hover .letteropen {
+  opacity: 1;
+}
+ 
+.mail:hover .mes {
+  opacity: 1;
+  transition-delay: 0.7s;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 17%;
+    padding: 0 1%;
+}
+
+.RMIT {
+  color: rgb(76, 131, 61);
+  font-size: 150%;
+}
+
+.group {
+  color: rgb(76, 131, 61);
+  font-size: 150%;
+  text-align: right;
+}
+
+.cta{
+  position: relative;
+  margin-top: 20%;
+}
+
+.call {
+  display: block;
+  width: 40%;
+  margin: -8% auto 0 auto;
+}
+
+.pick-up {
+  color: rgb(76, 131, 61);
+  font-size: 250%;
+  text-align: center;
+  margin-top: 6%;
+}
+
+.ref {
+  position: relative;
+  margin-top: 20%;
+}
+
+.ref-image {
+  display: block;
+  width: 40%;
+  margin: -5% auto 0 auto;
+}
+
+.text-ref {
+  color: rgb(76, 131, 61);
+  font-size: 250%;
+  text-align: center;
+  margin-top: 6%;
+}
+.link {
+  color: rgb(76, 131, 61);
+  font-size: 250%;
+  text-align: center;
+  margin-top: 2%;
+  display: block;
+}
+  h2, h3, h4, h5, h6 {
+    font-family: "Amoria";
+    line-height: 1.3;
+  }
+  h1 {
+    font-family: "Rasmien Demo";
+  }
+  h2 { font-size: clamp(1.4rem, 4vw, 2.2rem); }
+  h3 { font-size: clamp(1.1rem, 3vw, 1.6rem); }
+ 
+
+
+ 
