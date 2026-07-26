@@ -1,0 +1,108 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #000;
+}
+ 
+.artboard {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1920px;
+  height: 1080px;
+  overflow: hidden;
+  cursor: pointer;
+  transform-origin: center center;
+}
+ 
+.artboard img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1920px;
+  height: 1080px;
+  /* object-fit: cover giúp ảnh KHÔNG bị kéo giãn/méo nếu lỡ file gốc
+     có tỉ lệ khác 16:9 (vd khi export lại bị crop sai kích thước).
+     Nếu file đúng tỉ lệ 1920x1080 (hoặc 4x = 7680x4320) thì dòng này
+     không ảnh hưởng gì cả, ảnh vẫn hiện y như cũ. */
+  object-fit: cover;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: auto;
+}
+ 
+.cta {
+  margin: 1.5%;
+}
+.quote {
+  margin: 1.5%;
+}
+.paragraph {
+  margin: 1.5%;
+}
+ 
+@font-face {
+  font-family: "RMIT";
+  src: url("Safira\ March\ Personal\ Use\ Only.ttf") format("truetype");
+}
+
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 1.5%;
+  color: rgb(58, 146, 58);
+  font-family: "Safira March Personal Use Only", sans-serif;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 30;
+}
+.header h1 {
+  margin: 0;
+  font-size: 20px;
+  text-align: left;
+}
+ 
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 1.5%;
+  color: rgb(58, 146, 58);
+  font-family:"Safira March Personal Use Only", sans-serif;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  z-index: 30;
+}
+.footer h1 {
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.3;
+}
+.team {
+  text-align: right;
+}
+ 
+.decor-behind,
+.decor-front {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1920px;
+  height: 1080px;
+  pointer-events: none;
+}
+ 
+.decor-item {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+}
